@@ -1,0 +1,7 @@
+FROM alpine:3.7
+MAINTAINER mojozjdma@gmail.com
+
+COPY shadowsocks-server /go/bin/shadowsocks-server
+WORKDIR /go/bin/
+
+ENTRYPOINT ["/go/bin/shadowsocks-server", "-c", "/etc/config.json"]

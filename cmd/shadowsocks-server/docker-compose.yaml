@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ss-server:
+    environment:
+      - CONFIG=/etc/config
+    image: registry.cn-hangzhou.aliyuncs.com/shadow-go/ss-server:alpine
+    ports:
+    - 8390:8388
+    volumes:
+    - /Users/mojo/Downloads/workspace/code/src/github.com/mojo-zd/shadowsocks-go/cmd/shadowsocks-server/config.json:/etc/config.json

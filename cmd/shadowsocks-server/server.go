@@ -18,8 +18,7 @@ import (
 	"sync"
 	"syscall"
 	"time"
-
-	ss "github.com/shadowsocks/shadowsocks-go/shadowsocks"
+	ss "github.com/mojo-zd/shadowsocks-go/shadowsocks"
 )
 
 const (
