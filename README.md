@@ -25,6 +25,33 @@ go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local
 
 It's recommended to disable cgo when compiling shadowsocks-go. This will prevent the go runtime from creating too many threads for dns lookup.
 
+# install with docker
+- prepare config file(assume config file location is `/root/docker-compose/proxy/config.json`)
+
+```
+{
+    "server":"server ip",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"passwd",
+    "method": "aes-128-cfb",
+    "timeout":600
+}
+```
+
+- docker-compose define
+```
+version: '3'
+services:
+  ss-server:
+    image: registry.cn-hangzhou.aliyuncs.com/shadow-go/ss-server:alpine
+    ports:
+    - 8388:8388
+    volumes:
+    - /root/docker-compose/proxy/config.json:/etc/config.json
+```
+- shadow client recommend (go agent & shadowsocks client)
+
 # Usage
 
 Both the server and client program will look for `config.json` in the current directory. You can use `-c` option to specify another configuration file.
